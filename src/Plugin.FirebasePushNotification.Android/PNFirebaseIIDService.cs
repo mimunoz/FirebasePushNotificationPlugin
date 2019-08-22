@@ -15,18 +15,19 @@ using Firebase.Messaging;
 namespace Plugin.FirebasePushNotification
 {
     [Service]
-    [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
-    public class PNFirebaseIIDService : FirebaseInstanceIdService
-    {
-        /**
-         * Called if InstanceID token is updated. This may occur if the security of
-         * the previous token had been compromised. Note that this is called when the InstanceID token
+    [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+    public class PNFirebaseIIDService : FirebaseMessagingService
+	{
+		/**
+         * Called when token is updated. This may occur if the security of
+         * the previous token had been compromised. Note that this is called when the Instance token
          * is initially generated so this is where you would retrieve the token.
          */
-        public override void OnTokenRefresh()
-        {
-               // Get updated InstanceID token.
-            var refreshedToken = FirebaseInstanceId.Instance.Token;
+		public override void OnNewToken(string p0)
+		{
+			base.OnNewToken(p0);
+		
+            var refreshedToken = p0;
 
             //If previous token is null or empty resubscribe to topics since the old instance id isn't valid anymore
             if(string.IsNullOrEmpty(CrossFirebasePushNotification.Current.Token))

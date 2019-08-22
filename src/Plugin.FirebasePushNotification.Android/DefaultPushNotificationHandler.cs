@@ -363,7 +363,6 @@ namespace Plugin.FirebasePushNotification
             var notificationCategories = CrossFirebasePushNotification.Current?.GetUserNotificationCategories();
             if (notificationCategories != null && notificationCategories.Length > 0)
             {
-                IntentFilter intentFilter = null;
                 foreach (var userCat in notificationCategories)
                 {
                     if (userCat != null && userCat.Actions != null && userCat.Actions.Count > 0)
@@ -407,8 +406,6 @@ namespace Plugin.FirebasePushNotification
                         }
                     }
                 }
-
-          
             }
 
             OnBuildNotification(notificationBuilder, parameters);
