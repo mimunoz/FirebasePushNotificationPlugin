@@ -253,7 +253,7 @@ namespace Plugin.FirebasePushNotification
 			await System.Threading.Tasks.Task.Run(() =>
 			 {
 				 
-				 //var token = FirebaseInstanceId.Instance.GetToken("363782701847", FirebaseMessaging.InstanceIdScope);
+				 //var token = FirebaseInstanceId.Instance.GetToken("SenderId", FirebaseMessaging.InstanceIdScope);
 				 var token = FirebaseInstanceId.Instance.Token;
 				 if (!string.IsNullOrEmpty(token))
 				 {
